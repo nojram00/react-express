@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const apiRoutes = require('./api');
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use('/api', require('./api/test'));
+app.use('/api', ...apiRoutes);
 
 app.use(express.static(path.join(__dirname, "build")));
 
