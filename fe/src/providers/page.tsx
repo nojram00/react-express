@@ -41,7 +41,7 @@ export function PageContextProvider({ path, children } : { path: string; childre
             }).catch((error) => {
                 console.error(error);
             });
-    }, []);
+    }, [path]);
 
     return <PageContext.Provider value={{
         path,
