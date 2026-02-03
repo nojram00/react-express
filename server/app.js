@@ -13,11 +13,15 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "build")))
 
 app.use('/api', require('./api/test'));
 
+app.use(express.static(path.join(__dirname, "build")));
+
 app.use((req, res) => {
+    if(req.path.startsWith('/api')) {
+        return res.status(404).end();
+    }
     res.sendFile(path.join(__dirname, "build", "index.html"))
 });
 
